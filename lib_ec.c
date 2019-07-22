@@ -1,3 +1,17 @@
+/*
+  Copyright (C) 2019 Conative Labs
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>
+*/
+
 #include "lib_ec.h"
 #include "lib_ec_config.h"
 
@@ -83,7 +97,7 @@ static lib_ec_eC_t get_eC() {
 
 void lib_ec_cmd(lib_ec_cmd_t cmd, void *buffer) {
 	switch(cmd) {
-		case read: {
+		case ec_read: {
 			lib_ec_reading_t *vals = buffer;
 
 			vals->eC = get_eC();
@@ -122,41 +136,41 @@ void lib_ec_cmd(lib_ec_cmd_t cmd, void *buffer) {
 			vals->eC = eC_temperature(vals->eC, temperature);
 			vals->TDS = vals->eC*0.54;
 		} break;
-		case get_temperature:
+  case ec_get_temperature:
 			*(lib_ec_temperature_t*)buffer = temperature;
 		break;
-		case set_temperature:
+  case ec_set_temperature:
 			temperature = *(lib_ec_temperature_t*)buffer;
 		break;
-		case get_k:
+  case ec_get_k:
 			*(lib_ec_k_t*)buffer = params->k;
 		break;
-		case set_k:
+  case ec_set_k:
 			params->k = *(lib_ec_k_t*)buffer;
 		break;
-		case cal_dry:
+  case ec_cal_dry:
 			params->cal_dry = eC_temperature(get_eC(), temperature);
 		break;
-		case cal_low:
+  case ec_cal_low:
 			params->cal_low_in = eC_temperature(get_eC(), temperature);
 			params->cal_low_out = *(lib_ec_cal_low_t*)buffer;
 		break;
-		case cal_high:
-		case cal_single:
+  case ec_cal_high:
+  case ec_cal_single:
 			params->cal_high_in = eC_temperature(get_eC(), temperature);
 			params->cal_high_out = *(lib_ec_cal_high_t*)buffer;
 		break;
-		case cal_get:
+  case ec_cal_get:
 			((uint8_t *)buffer)[0] = 0;
 			if(CAL_HIGH_IN_DEFAULT != params->cal_high_in)
 				((uint8_t *)buffer)[0]++;
 			if(CAL_LOW_IN_DEFAULT != params->cal_low_in)
 				((uint8_t *)buffer)[0]++;
 		break;
-		case cal_clear:
+  case ec_cal_clear:
 			calibration_set_default();
 		break;
-		case reset:
+  case ec_reset:
 			params_set_default();
 		break;
 	}

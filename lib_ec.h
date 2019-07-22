@@ -1,3 +1,17 @@
+/*
+  Copyright (C) 2019 Conative Labs
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  You should have received a copy of the GNU General Public License
+  along with this program. If not, see <https://www.gnu.org/licenses/>
+*/
+
 #ifndef lib_ec_h
 #define lib_ec_h
 
@@ -29,18 +43,18 @@ typedef struct lib_ec_reading_t {
 } lib_ec_reading_t;
 
 typedef enum lib_ec_cmd_t {
-	read,
-	get_temperature,
-	set_temperature,
-	get_k,
-	set_k,
-	cal_dry,
-	cal_single,
-	cal_low,
-	cal_high,
-	cal_get,
-	cal_clear,
-	reset,
+                           ec_read,
+                           ec_get_temperature,
+                           ec_set_temperature,
+                           ec_get_k,
+                           ec_set_k,
+                           ec_cal_dry,
+                           ec_cal_single,
+                           ec_cal_low,
+                           ec_cal_high,
+                           ec_cal_get,
+                           ec_cal_clear,
+                           ec_reset,
 } lib_ec_cmd_t;
 
 void lib_ec_init(lib_ec_params_t *params_struct);
