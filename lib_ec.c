@@ -13,8 +13,11 @@
 */
 
 #include "lib_ec.h"
+#ifdef TEST
+#include "lib_ec_config_test.h"
+#else
 #include "lib_ec_config.h"
-
+#endif
 #include <math.h>
 
 #define MAGIC_NUMBER_DEFAULT 0x64
