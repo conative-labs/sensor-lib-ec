@@ -60,9 +60,12 @@
     int8:     INT8
     bool:     UINT8
 
-:gcov:
-    :html_report: true
-    :html_report_type: detailed
+gcov:
+  :xml_report: true
+  :html_report: true
+  :html_report_type: detailed
+  :gcovr:
+    :cobertura_pretty: true
 
 #:tools:
 # Ceedling defaults to using gcc for compiling, linking, etc.
