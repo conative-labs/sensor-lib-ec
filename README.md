@@ -1,3 +1,5 @@
+![Jenkins Build Status](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fbuild.conativelabs.com%2Fjob%2Fsensor-lib-ec%2Fjob%2Fmaster&style=plastic)
+![Jenkins Coverage](https://img.shields.io/jenkins/coverage/cobertura?jobUrl=https%3A%2F%2Fbuild.conativelabs.com%2Fjob%2Fsensor-lib-ec%2Fjob%2Fmaster&style=plastic)
 # EC Sensor library
 This library is made to manage the usage of a EC Probe.
 
